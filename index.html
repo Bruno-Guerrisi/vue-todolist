@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- icon -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css' integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==' crossorigin='anonymous'/>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container" id="app">
+
+        <header class="app-header">
+            <img src="https://www.boolean.careers/images/misc/logo.png" alt="">
+        </header>
+
+        <section class="next-todo">
+
+            <input type="text" 
+                    v-model.trim="newTodo" 
+                    placeholder="Nuovo todo"
+                    @keyup.enter="addTodo"
+                    ref="todoInput">
+
+            <button class="button" 
+                    @click="addTodo">
+                    Aggiungi
+                </button>
+
+        </section>
+
+        <main class="todos-section">
+            <ul class="todos-list">
+
+                <li class="todo" 
+                    v-for="(todo, i) in todos">
+                    
+                    <span class="text" 
+                        :class="{completed: todo.completed == true}"
+                        @click="changeTodo(i)">
+
+                        {{ todo.text }}
+                    </span>
+
+                    <i class="far fa-trash-alt delete"
+                        @click="removeTodo(i)"></i>
+                </li>
+
+            </ul>
+        </main>
+
+
+    </div>
+
+    <svg class="wave first" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgb(0, 0, 165)" fill-opacity="1" d="M0,224L40,208C80,192,160,160,240,170.7C320,181,400,235,480,261.3C560,288,640,288,720,272C800,256,880,224,960,224C1040,224,1120,256,1200,272C1280,288,1360,288,1400,288L1440,288L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+
+    
+    <svg class="wave third" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgb(0, 0, 250)" fill-opacity="1" d="M0,224L40,208C80,192,160,160,240,170.7C320,181,400,235,480,261.3C560,288,640,288,720,272C800,256,880,224,960,224C1040,224,1120,256,1200,272C1280,288,1360,288,1400,288L1440,288L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+    
+    <svg class="wave second" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgb(22, 22, 87)" fill-opacity="1" d="M0,224L40,208C80,192,160,160,240,170.7C320,181,400,235,480,261.3C560,288,640,288,720,272C800,256,880,224,960,224C1040,224,1120,256,1200,272C1280,288,1360,288,1400,288L1440,288L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+    
+    <script src="./main.js"></script>
+</body>
+</html>
